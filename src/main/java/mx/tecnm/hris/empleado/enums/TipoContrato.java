@@ -5,14 +5,13 @@ public enum TipoContrato {
     INTERINATO("INTERINATO"),
     PREJUBILACION("PREJUBILACIÓN");
 
-    private String tipoContrato;
+    private final String nombre;
 
-    TipoContrato(String tipoContrato) {
-        this.tipoContrato = tipoContrato;
+    TipoContrato(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getTipoContrato() {
-        return tipoContrato;
+    public String getNombre() {
+        return nombre;
     }
-
 }

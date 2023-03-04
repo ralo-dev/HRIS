@@ -12,13 +12,13 @@ public enum NivelAcademico {
     PRIMARIA("PRIMARIA"),
     SECUNDARIA("SECUNDARIA");
 
-    private String nivelAcademico;
+    private final String nombre;
 
-    NivelAcademico(String nivelAcademico) {
-        this.nivelAcademico = nivelAcademico;
+    NivelAcademico(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getNivelAcademico() {
-        return nivelAcademico;
+    public String getNombre() {
+        return nombre;
     }
 }
