@@ -1,4 +1,4 @@
-package mx.tecnm.hris.empleado.enums;
+package mx.tecnm.hris.empleados.enums;
 
 public enum TipoContrato {
     BASE("BASE"),

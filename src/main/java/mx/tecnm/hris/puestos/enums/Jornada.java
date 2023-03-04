@@ -1,4 +1,4 @@
-package mx.tecnm.hris.puesto.enums;
+package mx.tecnm.hris.puestos.enums;
 
 public enum Jornada {
     TIEMPO_COMPLETO("TIEMPO COMPLETO"),

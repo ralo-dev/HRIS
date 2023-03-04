@@ -1,4 +1,4 @@
-package mx.tecnm.hris.empleado;
+package mx.tecnm.hris.empleados;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -7,16 +7,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import mx.tecnm.hris.departamento.DepartamentoEntity;
-import mx.tecnm.hris.empleado.enums.Estado;
-import mx.tecnm.hris.empleado.enums.NivelAcademico;
-import mx.tecnm.hris.empleado.enums.Sexo;
-import mx.tecnm.hris.empleado.enums.TipoContrato;
+import mx.tecnm.hris.departamentos.DepartamentoEntity;
+import mx.tecnm.hris.empleados.enums.Estado;
+import mx.tecnm.hris.empleados.enums.NivelAcademico;
+import mx.tecnm.hris.empleados.enums.Sexo;
+import mx.tecnm.hris.empleados.enums.TipoContrato;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "empleado")
+@Table(name = "empleados")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -80,7 +80,7 @@ public class EmpleadoEntity {
     @Enumerated(EnumType.STRING)
     private TipoContrato tipoContrato;
 
-    @NotBlank(message = "El campo departamento no puede estar vacío")
+    @NotBlank(message = "El campo departamentos no puede estar vacío")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "departamento_id", nullable = false)
     private DepartamentoEntity departamento;

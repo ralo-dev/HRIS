@@ -1,10 +1,9 @@
-package mx.tecnm.hris.empleado;
+package mx.tecnm.hris.empleados;
 
-import mx.tecnm.hris.empleado.enums.Estado;
-import mx.tecnm.hris.empleado.enums.NivelAcademico;
-import mx.tecnm.hris.empleado.enums.Sexo;
-import mx.tecnm.hris.empleado.enums.TipoContrato;
-import org.springframework.beans.factory.annotation.Autowired;
+import mx.tecnm.hris.empleados.enums.Estado;
+import mx.tecnm.hris.empleados.enums.NivelAcademico;
+import mx.tecnm.hris.empleados.enums.Sexo;
+import mx.tecnm.hris.empleados.enums.TipoContrato;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -21,75 +20,83 @@ public class EmpleadoService {
         this.empleadoRepository = empleadoRepository;
     }
 
-    public Optional<EmpleadoEntity> buscarPorId(Long id) {
+    public Optional<EmpleadoEntity> findById(Long id) {
         return empleadoRepository.findById(id);
     }
 
-    public Optional<EmpleadoEntity> buscarPorRfc(String rfc) {
+    public Optional<EmpleadoEntity> findByNumeroTarjeta(Long id) {
+        return findById(id);
+    }
+
+    public Optional<EmpleadoEntity> findByRfc(String rfc) {
         return empleadoRepository.findByRfc(rfc);
     }
 
-    public Optional<EmpleadoEntity> buscarPorCurp(String curp) {
+    public Optional<EmpleadoEntity> findByCurp(String curp) {
         return empleadoRepository.findByCurp(curp);
     }
 
-    public List<EmpleadoEntity> buscarPorDepartamento(Long departamentoId) {
+    public List<EmpleadoEntity> findAll(){
+        return empleadoRepository.findAll();
+    }
+
+    public List<EmpleadoEntity> findByDepartamento(Long departamentoId) {
         return empleadoRepository.findByDepartamento_IdDepartamento(departamentoId).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorNombre(String nombre) {
+    public List<EmpleadoEntity> findByNombre(String nombre) {
         return empleadoRepository.findByNombreContainingIgnoreCase(nombre).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorEstado(Estado estado) {
+    public List<EmpleadoEntity> findByEstado(Estado estado) {
         return empleadoRepository.findByEstado(estado).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorNivelAcademico(NivelAcademico nivelAcademico) {
+    public List<EmpleadoEntity> findByNivelAcademico(NivelAcademico nivelAcademico) {
         return empleadoRepository.findByNivelAcademico(nivelAcademico).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorSexo(Sexo sexo) {
+    public List<EmpleadoEntity> findBySexo(Sexo sexo) {
         return empleadoRepository.findBySexo(sexo).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorTipoContrato(TipoContrato tipoContrato) {
+    public List<EmpleadoEntity> findByTipoContrato(TipoContrato tipoContrato) {
         return empleadoRepository.findByTipoContrato(tipoContrato).stream().collect(Collectors.toList());
     }
 
-    public void actualizarEstadoPorRfc(String rfc, Estado estado) {
+    public void updateStatusByRfc(String rfc, Estado estado) {
         empleadoRepository.actualizarEstadoPorRfc(rfc, estado);
     }
 
-    public void actualizarEstadoPorCurp(String curp, Estado estado) {
+    public void updateStatusByCurp(String curp, Estado estado) {
         empleadoRepository.actualizarEstadoPorCurp(curp, estado);
     }
 
-    public void actualizarEstadoPorId(Long id, Estado estado) {
+    public void updateStatusById(Long id, Estado estado) {
         empleadoRepository.actualizarEstadoPorId(id, estado);
     }
 
-    public List<EmpleadoEntity> buscarPorNombreYSexo(String nombre, Sexo sexo) {
+    public List<EmpleadoEntity> findByNombreYSexo(String nombre, Sexo sexo) {
         return empleadoRepository.findByNombreAndSexo(nombre, sexo).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorNivelAcademicoMayorOIgualA(NivelAcademico nivelAcademico) {
+    public List<EmpleadoEntity> findByNivelAcademicoMayorIgual(NivelAcademico nivelAcademico) {
         return empleadoRepository.findByNivelAcademicoGreaterThanEqual(nivelAcademico).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> buscarPorFechaIngresoAntesDeYEstadoIgualA(LocalDate fecha, Estado estado) {
+    public List<EmpleadoEntity> findByFechaIngresoBeforeAndEstadoEquals(LocalDate fecha, Estado estado) {
         return empleadoRepository.findByFechaIngresoBeforeAndEstadoEquals(fecha, estado).stream().collect(Collectors.toList());
     }
 
-    public EmpleadoEntity guardar(EmpleadoEntity empleado) {
+    public EmpleadoEntity save(EmpleadoEntity empleado) {
         return empleadoRepository.save(empleado);
     }
 
-    public List<EmpleadoEntity> guardarTodos(List<EmpleadoEntity> empleados) {
+    public List<EmpleadoEntity> saveAll(List<EmpleadoEntity> empleados) {
         return empleadoRepository.saveAll(empleados);
     }
 
-    public void eliminarPorId(Long id) {
+    public void deleteById(Long id) {
         empleadoRepository.deleteById(id);
     }
 }

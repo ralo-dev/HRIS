@@ -1,16 +1,16 @@
-package mx.tecnm.hris.puesto;
+package mx.tecnm.hris.puestos;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import mx.tecnm.hris.empleado.EmpleadoEntity;
-import mx.tecnm.hris.puesto.enums.Jornada;
-import mx.tecnm.hris.puesto.enums.Nombramiento;
-import mx.tecnm.hris.puesto.enums.TipoPlaza;
+import mx.tecnm.hris.empleados.EmpleadoEntity;
+import mx.tecnm.hris.puestos.enums.Jornada;
+import mx.tecnm.hris.puestos.enums.Nombramiento;
+import mx.tecnm.hris.puestos.enums.TipoPlaza;
 
 @Entity
-@Table(name = "puesto")
+@Table(name = "puestos")
 @NoArgsConstructor
 @Getter
 @Setter

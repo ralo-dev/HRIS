@@ -1,9 +1,9 @@
-package mx.tecnm.hris.empleado;
+package mx.tecnm.hris.empleados;
 
-import mx.tecnm.hris.empleado.enums.Estado;
-import mx.tecnm.hris.empleado.enums.NivelAcademico;
-import mx.tecnm.hris.empleado.enums.Sexo;
-import mx.tecnm.hris.empleado.enums.TipoContrato;
+import mx.tecnm.hris.empleados.enums.Estado;
+import mx.tecnm.hris.empleados.enums.NivelAcademico;
+import mx.tecnm.hris.empleados.enums.Sexo;
+import mx.tecnm.hris.empleados.enums.TipoContrato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +12,7 @@ import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Repository

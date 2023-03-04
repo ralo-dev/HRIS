@@ -1,13 +1,13 @@
-package mx.tecnm.hris.departamento;
+package mx.tecnm.hris.departamentos;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import mx.tecnm.hris.empleado.EmpleadoEntity;
+import mx.tecnm.hris.empleados.EmpleadoEntity;
 
 @Entity
-@Table(name = "departamento")
+@Table(name = "departamentos")
 @NoArgsConstructor
 @Getter
 @Setter
