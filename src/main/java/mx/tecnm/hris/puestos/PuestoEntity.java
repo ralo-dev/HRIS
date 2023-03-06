@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mx.tecnm.hris.empleados.EmpleadoEntity;
-import mx.tecnm.hris.puestos.enums.Jornada;
-import mx.tecnm.hris.puestos.enums.Nombramiento;
+import mx.tecnm.hris.puestos.enums.Categoria;
 import mx.tecnm.hris.puestos.enums.TipoPlaza;
 
 @Entity
@@ -28,17 +27,15 @@ public class PuestoEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
-    private Nombramiento nombramiento;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
     private TipoPlaza tipoPlaza;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
-    private Jornada categoriaJornada;
+    private Categoria categoria;
 
     @Column(nullable = false)
     private int numeroHorasNombramiento;
 
+    @Column(nullable = false)
+    private boolean activo;
 }
