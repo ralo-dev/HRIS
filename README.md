@@ -4,6 +4,8 @@
 
 This HRIS is an open-source Human Resources Information System developed with Java, Spring Boot, and other dependencies such as Spring Security, Lombok, and more. This system aims to simplify the management of employees' data, including their personal information, also featuring an history of changes and a dashboard.
 
+❗Development branch will work as testing branch too.
+
 ## Features
 - User-friendly interface
 - Manage employee data, including personal information and job history
