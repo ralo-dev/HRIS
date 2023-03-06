@@ -30,9 +30,6 @@ This HRIS is an open-source Human Resources Information System developed with Ja
 3. Manage employee data including personal information, salary, benefits, and performance evaluation.
 4. Export employee data to Excel for record-keeping and reporting.
 
-## Contributing
-Contributions to HRIS are welcome and encouraged! If you find a bug or have a feature request, please open an issue. If you would like to contribute code, please fork the repository and create a pull request with your changes.
-
 ## License
 This project is licensed under the terms of the [GNU GPL 3.0 license](https://github.com/ralo-dev/HRIS/blob/main/LICENSE).
 
