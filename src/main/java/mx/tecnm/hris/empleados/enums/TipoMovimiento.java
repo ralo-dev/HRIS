@@ -1,13 +1,13 @@
 package mx.tecnm.hris.empleados.enums;
 
-public enum TipoContrato {
+public enum TipoMovimiento {
     BASE("BASE"),
     INTERINATO("INTERINATO"),
     PREJUBILACION("PREJUBILACIÓN");
 
     private final String nombre;
 
-    TipoContrato(String nombre) {
+    TipoMovimiento(String nombre) {
         this.nombre = nombre;
     }
 

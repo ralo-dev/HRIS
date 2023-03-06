@@ -1,18 +1,18 @@
 package mx.tecnm.hris.puestos.enums;
 
-public enum Jornada {
+public enum Categoria {
     TIEMPO_COMPLETO("TIEMPO COMPLETO"),
     TRES_CUARTOS("TRES CUARTOS DE TIEMPO"),
     MEDIO_TIEMPO("MEDIO TIEMPO"),
     HORAS_ASIGNATURA("HORAS DE ASIGNATURA");
 
-    private String jornada;
+    private final String categoria;
 
-    private Jornada(String jornada) {
-        this.jornada = jornada;
+    private Categoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getJornada() {
-        return jornada;
+        return categoria;
     }
 }
