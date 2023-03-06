@@ -11,7 +11,7 @@ import mx.tecnm.hris.departamentos.DepartamentoEntity;
 import mx.tecnm.hris.empleados.enums.Estado;
 import mx.tecnm.hris.empleados.enums.NivelAcademico;
 import mx.tecnm.hris.empleados.enums.Sexo;
-import mx.tecnm.hris.empleados.enums.TipoContrato;
+import mx.tecnm.hris.empleados.enums.TipoMovimiento;
 
 import java.time.LocalDate;
 
@@ -78,7 +78,7 @@ public class EmpleadoEntity {
     @NotBlank(message = "El campo tipo de contrato no puede estar vacío")
     @Column(name = "tipo_contrato", nullable = false)
     @Enumerated(EnumType.STRING)
-    private TipoContrato tipoContrato;
+    private TipoMovimiento tipoMovimiento;
 
     @NotBlank(message = "El campo departamentos no puede estar vacío")
     @ManyToOne(fetch = FetchType.LAZY)

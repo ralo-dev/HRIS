@@ -3,7 +3,7 @@ package mx.tecnm.hris.empleados;
 import mx.tecnm.hris.empleados.enums.Estado;
 import mx.tecnm.hris.empleados.enums.NivelAcademico;
 import mx.tecnm.hris.empleados.enums.Sexo;
-import mx.tecnm.hris.empleados.enums.TipoContrato;
+import mx.tecnm.hris.empleados.enums.TipoMovimiento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,8 +11,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -34,26 +32,22 @@ public interface EmpleadoRepository extends JpaRepository<EmpleadoEntity, Long> 
 
     Streamable<EmpleadoEntity> findBySexo(Sexo sexo);
 
-    Streamable<EmpleadoEntity> findByTipoContrato(TipoContrato tipoContrato);
+    Streamable<EmpleadoEntity> findByTipoContrato(TipoMovimiento tipoMovimiento);
 
     // Modificación
     @Modifying
     @Query("UPDATE EmpleadoEntity e SET e.estado = :estado WHERE e.rfc = :rfc")
-    void actualizarEstadoPorRfc(@Param("rfc") String rfc, @Param("estado") Estado estado);
+    int actualizarEstadoPorRfc(@Param("rfc") String rfc, @Param("estado") Estado estado);
 
     @Modifying
     @Query("UPDATE EmpleadoEntity e SET e.estado = :estado WHERE e.curp = :curp")
-    void actualizarEstadoPorCurp(@Param("curp") String curp, @Param("estado") Estado estado);
+    int actualizarEstadoPorCurp(@Param("curp") String curp, @Param("estado") Estado estado);
 
     @Modifying
     @Query("UPDATE EmpleadoEntity e SET e.estado = :estado WHERE e.id = :id")
-    void actualizarEstadoPorId(@Param("id") Long id, @Param("estado") Estado estado);
+    int actualizarEstadoPorId(@Param("id") Long id, @Param("estado") Estado estado);
 
     // Otras consultas
-    Streamable<EmpleadoEntity> findByNombreAndSexo(String nombre, Sexo sexo);
-
     Streamable<EmpleadoEntity> findByNivelAcademicoGreaterThanEqual(NivelAcademico nivelAcademico);
-
-    Streamable<EmpleadoEntity> findByFechaIngresoBeforeAndEstadoEquals(LocalDate fecha, Estado estado);
 }
 
