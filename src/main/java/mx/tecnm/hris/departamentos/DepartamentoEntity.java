@@ -24,9 +24,7 @@ public class DepartamentoEntity {
     @JoinColumn(name = "id_jefe_departamento")
     private EmpleadoEntity jefeDepartamento;
 
-    // constructor
     public DepartamentoEntity(String nombre) {
         this.nombre = nombre;
     }
-
 }

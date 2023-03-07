@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/puestos")
+@RequestMapping("/api/v1/puestos")
 public class PuestoController {
     private final PuestoService puestoService;
     private final EmpleadoService empleadoService;
