@@ -1,6 +1,5 @@
 package mx.tecnm.hris.departamentos;
 
-import mx.tecnm.hris.empleados.EmpleadoEntity;
 import mx.tecnm.hris.empleados.EmpleadoService;
 import mx.tecnm.hris.utils.response.CustomResponse;
 import org.springframework.http.HttpStatus;

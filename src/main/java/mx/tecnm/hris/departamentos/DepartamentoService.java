@@ -1,5 +1,6 @@
 package mx.tecnm.hris.departamentos;
 
+import mx.tecnm.hris.empleados.EmpleadoEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +36,12 @@ public class DepartamentoService {
 
     public void deleteByNombre(String nombre) {
         departamentoRepository.deleteByNombre(nombre);
+    }
+
+    public void updateJefeByDepartamento(EmpleadoEntity jefe, DepartamentoEntity departamento) {
+        DepartamentoEntity ExistingDepartamento = departamentoRepository.findById(departamento.getIdDepartamento()).orElse(null);
+        assert ExistingDepartamento != null;
+        ExistingDepartamento.setJefeDepartamento(jefe);
+        departamentoRepository.save(ExistingDepartamento);
     }
 }

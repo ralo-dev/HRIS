@@ -1,5 +1,6 @@
 package mx.tecnm.hris.departamentos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,9 @@ public class DepartamentoEntity {
     @Column(nullable = false)
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_jefe_departamento")
+    @JsonManagedReference
     private EmpleadoEntity jefeDepartamento;
 
     public DepartamentoEntity(String nombre) {
