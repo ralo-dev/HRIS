@@ -1,6 +1,7 @@
 package mx.tecnm.hris.puestos;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import mx.tecnm.hris.puestos.enums.TipoPlaza;
 @Entity
 @Table(name = "puestos")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class PuestoEntity {
@@ -18,7 +20,7 @@ public class PuestoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPuestoEmpleado;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empleado")
     private EmpleadoEntity empleado;
 
