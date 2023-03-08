@@ -1,11 +1,17 @@
 package mx.tecnm.hris.departamentos;
 
+import mx.tecnm.hris.dto.DepartamentoDto;
+import mx.tecnm.hris.dto.EmpleadoDto;
+import mx.tecnm.hris.empleados.EmpleadoEntity;
 import mx.tecnm.hris.empleados.EmpleadoService;
 import mx.tecnm.hris.utils.response.CustomResponse;
+import org.modelmapper.ModelMapper;
+import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,6 +20,7 @@ public class DepartamentoController {
 
     DepartamentoService departamentoService;
     EmpleadoService empleadoService;
+    ModelMapper modelMapper = new ModelMapper();
 
     public DepartamentoController(DepartamentoService departamentoService, EmpleadoService empleadoService) {
         this.departamentoService = departamentoService;
@@ -23,19 +30,26 @@ public class DepartamentoController {
     @GetMapping("/")
     public ResponseEntity<Object> getAllDepartamentos() {
         List<DepartamentoEntity> departamentos = departamentoService.findAll();
-        return CustomResponse.generateResponse("Se encontraron los departamentos", HttpStatus.OK, departamentos);
+        List<DepartamentoDto> departamentosDto = new ArrayList<>();
+        for (DepartamentoEntity departamento : departamentos) {
+            DepartamentoDto departamentoDto = modelMapper.map(departamento, DepartamentoDto.class);
+            departamentosDto.add(departamentoDto);
+        }
+        return CustomResponse.generateResponse("Se encontraron los departamentos", HttpStatus.OK, departamentosDto);
     }
 
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<Object> getDepartamentoByNombre(@PathVariable String nombre) {
         DepartamentoEntity departamento = departamentoService.findByNombre(nombre);
-        return CustomResponse.generateResponse("Se encontró el departamento", HttpStatus.OK, departamento);
+        DepartamentoDto departamentoDto = modelMapper.map(departamento, DepartamentoDto.class);
+        return CustomResponse.generateResponse("Se encontró el departamento", HttpStatus.OK, departamentoDto);
     }
 
     @GetMapping("/id/{id}")
     public ResponseEntity<Object> getDepartamentoById(@PathVariable Long id) {
         DepartamentoEntity departamento = departamentoService.findById(id);
-        return CustomResponse.generateResponse("Se encontró el departamento", HttpStatus.OK, departamento);
+        DepartamentoDto departamentoDto = modelMapper.map(departamento, DepartamentoDto.class);
+        return CustomResponse.generateResponse("Se encontró el departamento", HttpStatus.OK, departamentoDto);
     }
 
     @PostMapping("/")
