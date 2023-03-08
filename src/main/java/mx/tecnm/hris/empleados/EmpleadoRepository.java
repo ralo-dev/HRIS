@@ -30,7 +30,7 @@ public interface EmpleadoRepository extends JpaRepository<EmpleadoEntity, Long> 
 
     Streamable<EmpleadoEntity> findBySexo(Sexo sexo);
 
-    Streamable<EmpleadoEntity> findByTipoContrato(TipoMovimiento tipoMovimiento);
+    Streamable<EmpleadoEntity> findByTipoMovimiento(TipoMovimiento tipoMovimiento);
 
     // Modificación
     @Modifying

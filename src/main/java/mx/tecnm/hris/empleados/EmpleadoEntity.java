@@ -1,8 +1,8 @@
 package mx.tecnm.hris.empleados;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,24 +27,19 @@ public class EmpleadoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El campo rfc no puede estar vacío")
     @Column(name = "rfc", nullable = false)
     private String rfc;
 
-    @NotBlank(message = "El campo curp no puede estar vacío")
     @Column(name = "curp", nullable = false)
     private String curp;
 
-    @NotBlank(message = "El campo correo institucional no puede estar vacío")
     @Email(message = "El correo institucional debe ser un correo válido")
     @Column(name = "correo_institucional", nullable = false)
     private String correoInstitucional;
 
-    @NotBlank(message = "El campo correo personal no puede estar vacío")
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @NotBlank(message = "El campo apellido paterno no puede estar vacío")
     @Column(name = "nivel_academico", nullable = false)
     @Enumerated(EnumType.STRING)
     private NivelAcademico nivelAcademico;
@@ -52,12 +47,10 @@ public class EmpleadoEntity {
     @Column(name = "profesion")
     private String profesion;
 
-    @NotBlank(message = "El campo sexo no puede estar vacío")
     @Column(name = "sexo", nullable = false)
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
-    @NotBlank(message = "El campo fecha de ingreso no puede estar vacío")
     @Column(name = "fecha_ingreso", nullable = false)
     private LocalDate fechaIngreso;
 
@@ -67,7 +60,6 @@ public class EmpleadoEntity {
     @Column(name = "motivo_baja")
     private String motivoBaja;
 
-    @NotBlank(message = "El campo estado no puede estar vacío")
     @Column(name = "estado", nullable = false)
     @Enumerated(EnumType.STRING)
     private Estado estado;
@@ -75,13 +67,29 @@ public class EmpleadoEntity {
     @Column(name = "comentarios")
     private String comentarios;
 
-    @NotBlank(message = "El campo tipo de contrato no puede estar vacío")
-    @Column(name = "tipo_contrato", nullable = false)
+    @Column(name = "tipo_movimiento", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoMovimiento tipoMovimiento;
 
-    @NotBlank(message = "El campo departamentos no puede estar vacío")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "departamento_id", nullable = false)
+    @JsonBackReference
     private DepartamentoEntity departamento;
+
+    public EmpleadoEntity(String rfc, String curp, String correoInstitucional, String nombre, NivelAcademico nivelAcademico, String profesion, Sexo sexo, LocalDate fechaIngreso, LocalDate fechaBaja, String motivoBaja, Estado estado, String comentarios, TipoMovimiento tipoMovimiento, DepartamentoEntity departamento) {
+        this.rfc = rfc;
+        this.curp = curp;
+        this.correoInstitucional = correoInstitucional;
+        this.nombre = nombre;
+        this.nivelAcademico = nivelAcademico;
+        this.profesion = profesion;
+        this.sexo = sexo;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaBaja = fechaBaja;
+        this.motivoBaja = motivoBaja;
+        this.estado = estado;
+        this.comentarios = comentarios;
+        this.tipoMovimiento = tipoMovimiento;
+        this.departamento = departamento;
+    }
 }

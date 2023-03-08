@@ -92,8 +92,8 @@ public class EmpleadoController {
     }
 
     @GetMapping("/tipoContrato/{tipoContrato}")
-    public ResponseEntity<Object> findByTipoContrato(@PathVariable String tipoContrato) {
-        List<EmpleadoEntity> listaEmpleados = empleadoService.findByTipoContrato(TipoMovimiento.valueOf(tipoContrato));
+    public ResponseEntity<Object> findByTipoMovimiento(@PathVariable String tipoContrato) {
+        List<EmpleadoEntity> listaEmpleados = empleadoService.findByTipoMovimiento(TipoMovimiento.valueOf(tipoContrato));
         return CustomResponse.generateResponse(listaEmpleados.size() + " empleados encontrados", HttpStatus.OK, listaEmpleados);
     }
 

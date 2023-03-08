@@ -55,8 +55,8 @@ public class EmpleadoService {
         return empleadoRepository.findBySexo(sexo).stream().collect(Collectors.toList());
     }
 
-    public List<EmpleadoEntity> findByTipoContrato(TipoMovimiento tipoMovimiento) {
-        return empleadoRepository.findByTipoContrato(tipoMovimiento).stream().collect(Collectors.toList());
+    public List<EmpleadoEntity> findByTipoMovimiento(TipoMovimiento tipoMovimiento) {
+        return empleadoRepository.findByTipoMovimiento(tipoMovimiento).stream().collect(Collectors.toList());
     }
 
     public int updateEstadoByRfc(String rfc, Estado estado) {
