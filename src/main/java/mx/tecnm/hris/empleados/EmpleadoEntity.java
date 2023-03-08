@@ -1,6 +1,7 @@
 package mx.tecnm.hris.empleados;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -73,7 +74,7 @@ public class EmpleadoEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "departamento_id", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference
     private DepartamentoEntity departamento;
 
     public EmpleadoEntity(String rfc, String curp, String correoInstitucional, String nombre, NivelAcademico nivelAcademico, String profesion, Sexo sexo, LocalDate fechaIngreso, LocalDate fechaBaja, String motivoBaja, Estado estado, String comentarios, TipoMovimiento tipoMovimiento, DepartamentoEntity departamento) {

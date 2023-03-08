@@ -1,9 +1,11 @@
 package mx.tecnm.hris.departamentos;
 
 import mx.tecnm.hris.empleados.EmpleadoEntity;
+import mx.tecnm.hris.empleados.enums.Estado;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartamentoService {
@@ -19,7 +21,7 @@ public class DepartamentoService {
     }
 
     public DepartamentoEntity findById(Long id) {
-        return departamentoRepository.findById(id).orElse(null);
+        return departamentoRepository.findByIdWithActiveEmployees(id).orElse(null);
     }
 
     public void deleteById(Long id) {
@@ -27,11 +29,11 @@ public class DepartamentoService {
     }
 
     public List<DepartamentoEntity> findAll() {
-        return departamentoRepository.findAll();
+        return departamentoRepository.findAllWithActiveEmployees();
     }
 
     public DepartamentoEntity findByNombre(String nombre) {
-        return departamentoRepository.findByNombre(nombre);
+        return departamentoRepository.findByNombreWithActiveEmployees(nombre).orElse(null);
     }
 
     public void deleteByNombre(String nombre) {
